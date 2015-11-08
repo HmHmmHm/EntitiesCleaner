@@ -6,6 +6,7 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
 use pocketmine\tile\Tile;
 use pocketmine\entity\Creature;
+use pocketmine\utils\TextFormat;
 
 class EntitiesCleaner extends PluginBase implements Listener {
 	public function onEnable() {
@@ -19,6 +20,7 @@ class EntitiesCleaner extends PluginBase implements Listener {
 				if ($entity instanceof Tile) continue;
 				if ($entity instanceof Creature) continue;
 				$entity->close ();
+                                $this->getServer ()->getOnlinePlayers ()->sendMessage (TextFormat::YELLOW . "All items lying on the ground, have been removed");
 			}
 	}
 	public function onMonsterClean() {
